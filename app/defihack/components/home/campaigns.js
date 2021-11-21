@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
-import Campaign from './campaign'
+import Campaign from '../campaign'
 
 export default class Campaigns extends Component {
     render() {

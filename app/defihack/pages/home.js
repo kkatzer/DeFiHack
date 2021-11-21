@@ -1,6 +1,7 @@
 import Campaigns from "../components/home/campaigns"
 import Explore from "../components/home/explore"
 import Featureds from "../components/home/featureds"
+import BuyNFTs from "../components/home/BuyNTFs"
 
 import { useContractKit } from '@celo-tools/use-contractkit';
 import { ContractKitProvider } from '@celo-tools/use-contractkit';
@@ -21,6 +22,8 @@ function Home() {
       <Featureds />
 
       <Campaigns />
+
+      <BuyNFTs />
     </div>
   )
 

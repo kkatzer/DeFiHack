@@ -38,14 +38,15 @@ export default class Tabs extends Component {
                         return child.props.children
                     })}
                 </div>
-                <ol className="tabs">
+                <ol className="tabs flex justify-around content-center">
                     {children.map((child) => {
-                        const { label } = child.props
+                        const { icon, label } = child.props
 
                         return (
                             <Tab
                                 activeTab={activeTab}
                                 key={label}
+                                icon={icon}
                                 label={label}
                                 onClick={onClickTabItem}
                             />
