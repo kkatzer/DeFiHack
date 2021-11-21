@@ -3,6 +3,7 @@ import dudaPic from "../assets/duda.jpeg"
 import Image from "next/image"
 import Link from "next/link"
 import PropTypes from 'prop-types'
+import {buyNFT} from "../scripts/celo-client";
 
 export default class NFT extends Component {
     static propTypes = {
@@ -10,7 +11,8 @@ export default class NFT extends Component {
         image: PropTypes.string.isRequired,
         price: PropTypes.string.isRequired,
         seller: PropTypes.string.isRequired,
-        tokenId: PropTypes.string.isRequired
+        tokenId: PropTypes.string.isRequired,
+        itemId: PropTypes.string.isRequired
     }
     
     render() {
@@ -28,7 +30,7 @@ export default class NFT extends Component {
                         </p>
 
                         <Link href={"/product/buy/" + this.props.tokenId} passHref>
-                            <button className="btn btn-primary">Buy</button>
+                            <button className="btn btn-primary" onClick={() => buyNFT(this.props)}>Buy</button>
                         </Link>
                     </div>
                 </div>

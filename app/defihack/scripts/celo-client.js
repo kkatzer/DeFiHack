@@ -57,9 +57,11 @@ export const loadNFTs = async function () {
         const tokenUri = await nftContract.methods.tokenURI(i.tokenId).call()
         const meta = await axios.get(tokenUri)
         let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+        console.log(i)
         let item = {
             price,
             tokenId: i.tokenId,
+            itemId: i.itemId,
             seller: i.seller,
             owner: i.owner,
             image: meta.data.image,
@@ -97,16 +99,16 @@ export const createSale = async function (url, inputPrice) {
 }
 
 export const buyNFT = async function (nft) {
-    nft = {tokenId: "12", price: "1.0"}
+    console.log(nft);
     /* Connect wallet, if needed, and create contracts */
     let _ = await  connectCeloWallet()
 
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
 
-    let tx = await marketContract.methods.createMarketSale(nftaddress, nft.tokenId).send({
+    let tx = await marketContract.methods.createMarketSale(nftaddress, nft.itemId).send({
         from: kit.defaultAccount,
         value: price,
-        gas: 200000
+        gasLimit: 2000000
     })
     console.log(tx)
 }
