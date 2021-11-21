@@ -10,7 +10,11 @@ import { useEffect, useState } from 'react'
 
 function Home() {
     const { address, connect } = useContractKit()
-    const [connectButtonText, setConnectButtonText] = useState(address ? address : 'Connect Wallet')
+    const [connectButtonText, setConnectButtonText] = useState(null)
+
+    useEffect(() => {
+        setConnectButtonText(address ? address : 'Connect Wallet');
+    }, [address]);
   return (
     <div className="pt-12">
       <nav className="flex justify-end pr-4 mb-3">
