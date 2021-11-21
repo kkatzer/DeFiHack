@@ -12,6 +12,8 @@ export default function Buy(props) {
 
     const router = useRouter()
 
+    const nft = props.nft
+
     const onClickBuy = () => {
         setBuyState(state.LOADING)
         setTimeout(() => {
@@ -34,9 +36,9 @@ export default function Buy(props) {
                 return (
                     <>
                         <div className="text-white flex flex-col justify-center items-center w-screen h-screen px-4">
-                            <p className="text-center font-normal text-xs">Kitchen</p>
+                            <p className="text-center font-normal text-xs">{nft.name}</p>
                             <p className="text-center font-normal text-2xs">Pulmo</p>
-                            <p className="text-center text-4xl font-semibold mt-4">CELO 15.00</p>
+                            <p className="text-center text-4xl font-semibold mt-4">CELO {nft.price}</p>
                             <p className="text-center text-sm font-normal mt-4">You currently have <b>$576</b> on your wallet <br />
                                 Do you want to proceed with your purchase?</p>
 

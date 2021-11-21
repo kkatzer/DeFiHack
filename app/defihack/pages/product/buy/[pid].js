@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { useRouter } from 'next/router'
 import BackNav from '../../../components/backNav'
-import dudaPic from '../../../assets/duda.jpeg'
 import planetaPic from '../../../assets/planeta.png'
 import Image from 'next/image'
 import Tabs from '../../../components/tabs'
 import { XIcon } from '@heroicons/react/solid'
 import { useState } from 'react'
 import Buy from '../../../components/product/buyModal'
+import DataManager from '../../../scripts/data-manager'
 
 export default function BuyProduct() {
     const router = useRouter()
     const { pid } = router.query
+
+    const nft = DataManager.getInstance().getNFT(pid)
 
     const [modalHidden, setModalHidden] = useState(true)
 
@@ -25,7 +27,7 @@ export default function BuyProduct() {
                 <BackNav />
 
                 <div className="w-80 h-72 relative mx-auto rounded-md overflow-hidden">
-                    <Image src={dudaPic} layout="fill" alt="Duda Love" />
+                    <Image src={nft.image} layout="fill" alt="Duda Love" className="object-cover" />
                     <div className="bg-black bg-opacity-40 rounded-full w-7 h-7 flex content-center justify-center absolute right-2 top-2 pt-1">
                         <Image src="/heart.svg" width="17px" height="17px" alt="Favorite" />
                     </div>
@@ -38,15 +40,15 @@ export default function BuyProduct() {
                     <p className="text-white text-base font-semibold ml-2 flex-grow leading-4">
                         <span className="text-2xs font-normal">Pulmo</span>
                         <br />
-                        Kitchen
+                        {nft.name}
                     </p>
                     <p className="text-white text-base font-semibold ml-2 text-right leading-4">
-                        CELO 15.00
+                        CELO {nft.price}
                     </p>
                 </div>
 
-                <p className="px-6 text-white mt-6 text-sm font-normal" style={{ minHeight: "175px" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <p className="px-6 text-white mt-6 text-sm font-normal" style={{ minHeight: "125px" }}>
+                    {nft.description}    
                 </p>
 
                 <div className="px-6">
@@ -62,7 +64,7 @@ export default function BuyProduct() {
             </div>
             <div className={"modal bg-opacity-70 bg-background backdrop-filter backdrop-blur-2xl fixed top-0 w-screen h-screen z-50" + (modalHidden ? " hidden" : "")}>
                 <button className="text-white h-7 w-7 absolute top-10 right-5" onClick={toggleModal}><XIcon /></button>
-                <Buy close={toggleModal}/>
+                <Buy close={toggleModal} nft={nft}/>
             </div>
         </>
     )

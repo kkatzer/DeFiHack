@@ -2,24 +2,33 @@ import React, { Component } from "react"
 import dudaPic from "../assets/duda.jpeg"
 import Image from "next/image"
 import Link from "next/link"
+import PropTypes from 'prop-types'
 
 export default class NFT extends Component {
+    static propTypes = {
+        name: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        price: PropTypes.string.isRequired,
+        seller: PropTypes.string.isRequired,
+        tokenId: PropTypes.string.isRequired
+    }
+    
     render() {
         return (
-            <div className="relative shadow-sm rounded-md w-80 h-72 flex-shrink-0 overflow-hidden">
-                <Image src={dudaPic} width="320px" height="288px" objectFit="cover" className="absolute" alt="Duda Love" />
+            <div className="relative shadow-sm rounded-md w-80 h-72 flex-shrink-0 overflow-hidden mx-auto">
+                <Image src={this.props.image} width="320px" height="288px" objectFit="cover" className="absolute" alt="Duda Love" />
                 <div className="gradientBackground w-full h-16 text-white absolute bottom-0">
                     <div className="flex justify-between items-center content-center h-full px-5">
                         <p className="text-xs">
-                            Duda Love
+                            {this.props.name}
                             <br />
                             <span className="text-2xs">dudalmello</span>
                             <br />
-                            $15.00
+                            CELO {this.props.price}
                         </p>
 
-                        <Link href="/product/1" passHref>
-                            <button className="btn btn-primary">Place a bid</button>
+                        <Link href={"/product/buy/" + this.props.tokenId} passHref>
+                            <button className="btn btn-primary">Buy</button>
                         </Link>
                     </div>
                 </div>
