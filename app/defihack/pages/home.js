@@ -2,11 +2,18 @@ import Campaigns from "../components/home/campaigns"
 import Explore from "../components/home/explore"
 import Featureds from "../components/home/featureds"
 
-export default function Home() {
+import { useContractKit } from '@celo-tools/use-contractkit';
+import { ContractKitProvider } from '@celo-tools/use-contractkit';
+import '@celo-tools/use-contractkit/lib/styles.css';
+import { useEffect, useState } from 'react'
+
+function Home() {
+    const { address, connect } = useContractKit()
+    const [connectButtonText, setConnectButtonText] = useState(address ? address : 'Connect Wallet')
   return (
     <div className="pt-12">
       <nav className="flex justify-end pr-4 mb-3">
-        <button className="btn btn-secondary text-xs">Connect Wallet</button>
+        <button className="btn btn-secondary text-xs" onClick={connectWallet}>{connectButtonText}</button>
       </nav>
 
       <Explore />
@@ -16,4 +23,31 @@ export default function Home() {
       <Campaigns />
     </div>
   )
+
+    async function connectWallet() {
+        try {
+            let connector = await connect()
+            setConnectButtonText(connector.account)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
+
+
+
+
+function WrappedApp() {
+    return (
+        <ContractKitProvider
+            dapp={{
+                name: "beNFT",
+                description: "beNFT, marketing NFTs for good causes!",
+                url: "",
+            }}
+        >
+            <Home />
+        </ContractKitProvider>
+    );
+}
+export default WrappedApp;
