@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import dudaPic from "../assets/duda.jpeg"
 import Image from "next/image"
 import Link from "next/link"
 import PropTypes from 'prop-types'

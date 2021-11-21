@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { useRouter } from 'next/router'
 import BackNav from '../../../components/backNav'
-import dudaPic from '../../../assets/duda.jpeg'
-import planetaPic from '../../../assets/planeta.png'
+import planetaPic from '../../../assets/planeta.svg'
 import Image from 'next/image'
 import Tabs from '../../../components/tabs'
 import { XIcon } from '@heroicons/react/solid'
@@ -25,7 +24,7 @@ export default function AuctionProduct() {
                 <BackNav />
 
                 <div className="w-80 h-72 relative mx-auto rounded-md overflow-hidden">
-                    <Image src={dudaPic} layout="fill" alt="Duda Love" />
+                    {/* <Image src={dudaPic} layout="fill" alt="Duda Love" /> */}
                     <div className="bg-black bg-opacity-40 rounded-full w-7 h-7 flex content-center justify-center absolute right-2 top-2 pt-1">
                         <Image src="/heart.svg" width="17px" height="17px" alt="Favorite" />
                     </div>
@@ -33,7 +32,7 @@ export default function AuctionProduct() {
 
                 <div className="px-6 flex mt-7 justify-start justify-items-stretch items-center">
                     <div className="w-10 h-10">
-                        <Image src={planetaPic} width="39px" height="39px" alt="Planeta" />
+                        {/* <Image src={planetaPic} width="39px" height="39px" alt="Planeta" /> */}
                     </div>
                     <p className="text-white text-base font-semibold ml-2 flex-grow leading-4">
                         <span className="text-2xs font-normal">Pulmo</span>
