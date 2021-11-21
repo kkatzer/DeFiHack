@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { useRouter } from 'next/router'
 import BackNav from '../../../components/backNav'
-import planetaPic from '../../../assets/planeta.png'
+import planetaPic from '../../../assets/planeta.svg'
 import Image from 'next/image'
 import Tabs from '../../../components/tabs'
 import { XIcon } from '@heroicons/react/solid'
 import { useState } from 'react'
 import Buy from '../../../components/product/buyModal'
 import DataManager from '../../../scripts/data-manager'
+import Link from 'next/link'
 
 export default function BuyProduct() {
     const router = useRouter()
@@ -35,7 +36,9 @@ export default function BuyProduct() {
 
                 <div className="px-6 flex mt-7 justify-start justify-items-stretch items-center">
                     <div className="w-10 h-10">
-                        <Image src={planetaPic} width="39px" height="39px" alt="Planeta" />
+                        <Link href="/organization/1" passHref>
+                            <Image src={planetaPic} width="39px" height="39px" alt="Planeta" />
+                        </Link>
                     </div>
                     <p className="text-white text-base font-semibold ml-2 flex-grow leading-4">
                         <span className="text-2xs font-normal">Pulmo</span>

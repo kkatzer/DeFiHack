@@ -38,7 +38,7 @@ export const connectCeloWallet = async function () {
             console.log(`⚠️ ${error}.`)
         }
     } else {
-        console.log("⚠️ Please install Metamask.")
+        alert("⚠️ Please install Metamask.")
     }
 }
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import dudaPic from "../assets/duda.jpeg"
 import Image from "next/image"
 import Link from "next/link"
 import PropTypes from 'prop-types'
@@ -24,7 +23,7 @@ export default class NFT extends Component {
                         <p className="text-xs">
                             {this.props.name}
                             <br />
-                            <span className="text-2xs">dudalmello</span>
+                            <span className="text-2xs">Pulmo</span>
                             <br />
                             CELO {this.props.price}
                         </p>

@@ -17,9 +17,6 @@ module.exports = {
       fontFamily: {
         'sans': ['Montserrat', 'Helvetica', 'Arial', 'sans-serif']
       },
-      backgroundImage: {
-        'dudaPic': "url('../assets/duda.jpeg')"
-      },
       dropShadow: {
         'green': '0 0 4px rgba(111, 195, 117, 0.5)'
       }
