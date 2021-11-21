@@ -1,7 +1,8 @@
 import Tabs from "../components/tabs"
 import Home from "./home"
+import {ContractKitProvider} from "@celo-tools/use-contractkit";
 
-export default function App() {
+function App() {
     return (
         <div className="container mx-auto min-h-screen">
             <Tabs>
@@ -15,3 +16,19 @@ export default function App() {
         </div>
     )
 }
+
+function WrappedApp() {
+    return (
+        <ContractKitProvider
+            dapp={{
+                name: "beNFT",
+                description: "beNFT, marketing NFTs for good causes!",
+                url: "",
+            }}
+        >
+            <App />
+        </ContractKitProvider>
+    );
+}
+
+export default WrappedApp;

@@ -4,11 +4,10 @@ import Featureds from "../components/home/featureds"
 import BuyNFTs from "../components/home/BuyNTFs"
 
 import { useContractKit } from '@celo-tools/use-contractkit';
-import { ContractKitProvider } from '@celo-tools/use-contractkit';
 import '@celo-tools/use-contractkit/lib/styles.css';
 import { useEffect, useState } from 'react'
 
-function Home() {
+export default function Home() {
     const { address, connect } = useContractKit()
     const [connectButtonText, setConnectButtonText] = useState(null)
 
@@ -40,21 +39,3 @@ function Home() {
         }
     }
 }
-
-
-
-
-function WrappedApp() {
-    return (
-        <ContractKitProvider
-            dapp={{
-                name: "beNFT",
-                description: "beNFT, marketing NFTs for good causes!",
-                url: "",
-            }}
-        >
-            <Home />
-        </ContractKitProvider>
-    );
-}
-export default WrappedApp;

@@ -2,6 +2,9 @@ import React, { Component } from "react"
 import dudaPic from "../../assets/duda.jpeg"
 import Image from "next/image"
 
+import { useCallback, useEffect, useState } from 'react'
+import { useContractKit } from '@celo-tools/use-contractkit'
+
 export default class Featured extends Component {
     render() {
         return (
