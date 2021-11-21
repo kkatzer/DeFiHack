@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 import { useRouter } from 'next/router'
-import BackNav from '../../components/backNav'
-import dudaPic from '../../assets/duda.jpeg'
-import planetaPic from '../../assets/planeta.png'
+import BackNav from '../../../components/backNav'
+import dudaPic from '../../../assets/duda.jpeg'
+import planetaPic from '../../../assets/planeta.png'
 import Image from 'next/image'
-import Tabs from "../../components/tabs"
+import Tabs from '../../../components/tabs'
 import { XIcon } from '@heroicons/react/solid'
 import { useState } from 'react'
-import CurrencyInput from 'react-currency-masked-input'
+import MakeOffer from '../../../components/product/makeOfferModal'
 
-export default function Product() {
+export default function AuctionProduct() {
     const router = useRouter()
     const { pid } = router.query
 
-    const [ modalHidden, setModalHidden ] = useState(true)
+    const [modalHidden, setModalHidden] = useState(true)
 
-    const openModal = () => {
+    const toggleModal = () => {
         setModalHidden(!modalHidden)
     }
 
     return (
         <>
-            <div className="container">
+            <div className="container mx-auto">
                 <BackNav />
 
                 <div className="w-80 h-72 relative mx-auto rounded-md overflow-hidden">
@@ -43,7 +43,7 @@ export default function Product() {
                     <p className="text-white text-base font-semibold ml-2 text-right leading-4">
                         <span className="text-2xs font-normal">Current bid</span>
                         <br />
-                        $15.00
+                        CELO 15.00
                     </p>
                 </div>
 
@@ -52,7 +52,7 @@ export default function Product() {
                 </p>
 
                 <div className="px-6">
-                    <button className="btn btn-lg btn-primary w-full" onClick={openModal}> Place a bid</button>
+                    <button className="btn btn-lg btn-primary w-full" onClick={toggleModal}> Place a bid</button>
                 </div>
 
                 <Tabs active="Home" root={false} router={router}>
@@ -63,22 +63,8 @@ export default function Product() {
                 </Tabs>
             </div>
             <div className={"modal bg-opacity-70 bg-background backdrop-filter backdrop-blur-2xl fixed top-0 w-screen h-screen z-50" + (modalHidden ? " hidden" : "")}>
-                <button className="text-white h-7 w-7 absolute top-10 right-5" onClick={openModal}><XIcon/></button>
-                <div className="text-white flex flex-col justify-center items-center w-screen h-screen">
-                    <p className="text-center font-semibold text-2xl">Make an offer</p>
-                    <form action="#" method="POST" className="w-full mt-6">
-                        <div className="px-11">
-                            <label htmlFor="price" className="block text-base font-semibold">
-                                Price
-                            </label>
-                            <div className="mt-1 rounded-md flex w-full px-3 py-1 bg-transparent border border-white">
-                                <span className="inline-flex items-center rounded-l-md">$</span>
-                                <CurrencyInput type="text" name="price" id="price" className="bg-transparent" placeholder="20.00"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                    <button className="btn btn-lg btn-primary absolute bottom-28 left-9 right-9">Make Offer</button>
+                <button className="text-white h-7 w-7 absolute top-10 right-5" onClick={toggleModal}><XIcon /></button>
+                <MakeOffer close={toggleModal}/>
             </div>
         </>
     )
