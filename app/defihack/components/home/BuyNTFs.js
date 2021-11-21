@@ -18,6 +18,7 @@ export default function BuyNFTs(props) {
                                 seller={nft.seller}
                                 tokenId={nft.tokenId}
                                 itemId={nft.itemId}
+                                sold={nft.sold}
                                 key={"nft-" + idx}
                             />
                         )

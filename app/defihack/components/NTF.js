@@ -10,7 +10,8 @@ export default class NFT extends Component {
         price: PropTypes.string.isRequired,
         seller: PropTypes.string.isRequired,
         tokenId: PropTypes.string.isRequired,
-        itemId: PropTypes.string.isRequired
+        itemId: PropTypes.string.isRequired,
+        sold: PropTypes.string.isRequired
     }
     
     render() {

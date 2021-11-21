@@ -53,23 +53,7 @@ export const loadNFTs = async function () {
 
 
     let data = await marketContract.methods.fetchMarketItems().call()
-    return await Promise.all(data.map(async i => {
-        const tokenUri = await nftContract.methods.tokenURI(i.tokenId).call()
-        const meta = await axios.get(tokenUri)
-        let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
-        console.log(i)
-        let item = {
-            price,
-            tokenId: i.tokenId,
-            itemId: i.itemId,
-            seller: i.seller,
-            owner: i.owner,
-            image: meta.data.image,
-            name: meta.data.name,
-            description: meta.data.description,
-        }
-        return item
-    }))
+    return NFTMapper(data)
 }
 
 export const createSale = async function (url, inputPrice) {
@@ -111,5 +95,52 @@ export const buyNFT = async function (nft) {
         gasLimit: 2000000
     })
     console.log(tx)
+}
+
+export const loadMyNFTs = async function () {
+    let _ = await connectCeloWallet()
+
+    let networkType = await kit.web3.currentProvider.connection.web3.eth.net.getNetworkType()
+
+    // TODO this is a workaround
+    if (networkType.toString() !== 'private')
+        return undefined
+
+    let data = await marketContract.methods.fetchMyNFTs().call()
+    return NFTMapper(data)
+}
+
+export const loadMyCreatedNFTs = async function () {
+    let _ = await connectCeloWallet()
+
+    let networkType = await kit.web3.currentProvider.connection.web3.eth.net.getNetworkType()
+
+    // TODO this is a workaround
+    if (networkType.toString() !== 'private')
+        return undefined
+
+    let data = await marketContract.methods.fetchItemsCreated().call()
+    return NFTMapper(data)
+}
+
+const NFTMapper = async function(data) {
+    return await Promise.all(data.map(async i => {
+        const tokenUri = await nftContract.methods.tokenURI(i.tokenId).call()
+        const meta = await axios.get(tokenUri)
+        let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+        console.log(i)
+        let item = {
+            price,
+            tokenId: i.tokenId,
+            itemId: i.itemId,
+            sold: i.sold,
+            seller: i.seller,
+            owner: i.owner,
+            image: meta.data.image,
+            name: meta.data.name,
+            description: meta.data.description,
+        }
+        return item
+    }))
 }
 
