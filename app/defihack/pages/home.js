@@ -2,6 +2,7 @@ import Campaigns from "../components/home/campaigns"
 import Explore from "../components/home/explore"
 import Featureds from "../components/home/featureds"
 import BuyNFTs from "../components/home/BuyNTFs"
+import {loadNFTs} from "../scripts/celo-client"
 
 import { useContractKit } from '@celo-tools/use-contractkit';
 import '@celo-tools/use-contractkit/lib/styles.css';
@@ -10,6 +11,10 @@ import { useEffect, useState } from 'react'
 export default function Home() {
     const { address, connect } = useContractKit()
     const [connectButtonText, setConnectButtonText] = useState(null)
+
+    useEffect(() => {
+        loadNFTs().then(r => console.log(r))
+    }, [])
 
     useEffect(() => {
         setConnectButtonText(address ? address : 'Connect Wallet');
