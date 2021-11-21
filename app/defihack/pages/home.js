@@ -8,6 +8,10 @@ import { useContractKit } from '@celo-tools/use-contractkit';
 import '@celo-tools/use-contractkit/lib/styles.css';
 import { useEffect, useState } from 'react'
 
+const addressBeautify = (address) => {
+  return address.substring(0,5) + "..." + address.slice(address.length - 3)
+}
+
 export default function Home() {
     const { address, connect } = useContractKit()
     const [connectButtonText, setConnectButtonText] = useState(null)
@@ -17,7 +21,7 @@ export default function Home() {
     }, [])
 
     useEffect(() => {
-        setConnectButtonText(address ? address : 'Connect Wallet');
+        setConnectButtonText(address ? addressBeautify(address) : 'Connect Wallet');
     }, [address]);
   return (
     <div className="pt-12">
@@ -38,7 +42,7 @@ export default function Home() {
     async function connectWallet() {
         try {
             let connector = await connect()
-            setConnectButtonText(connector.account)
+            setConnectButtonText(addressBeautify(connector.account))
         } catch (error) {
             console.log(error)
         }

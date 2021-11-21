@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import dudaPic from "../../assets/duda.jpeg"
 import Image from "next/image"
+import Link from "next/link"
 
 import { useCallback, useEffect, useState } from 'react'
 import { useContractKit } from '@celo-tools/use-contractkit'
@@ -17,10 +18,14 @@ export default class Featured extends Component {
                             <br />
                             $15.00
                         </p>
-                        <button className="btn-sm btn-primary">Buy</button>
+
+                        <Link href="/product/1" passHref>
+                            <button className="btn-sm btn-primary">Buy</button>
+
+                        </Link>
                     </div>
                 </div>
-                <div className="bg-black bg-opacity-40 rounded-full w-4 h-4 flex content-center justify-center absolute right-2 top-2">
+                <div className="bg-black bg-opacity-40 rounded-full w-4 h-4 flex content-center justify-center absolute right-2 top-2" style={{paddingTop: "0.1rem"}}>
                     <Image src="/heart.svg" width="11px" height="13px" alt="Favorite" />
                 </div>
             </div>

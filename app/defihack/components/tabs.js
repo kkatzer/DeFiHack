@@ -4,19 +4,24 @@ import Tab from "./tab"
 
 export default class Tabs extends Component {
     static propTypes = {
-        children: PropTypes.instanceOf(Array).isRequired
+        children: PropTypes.instanceOf(Array).isRequired,
+        active: PropTypes.string.isRequired
     }
 
     constructor(props) {
         super(props)
 
         this.state = {
-            activeTab: this.props.children[0].props.label
+            activeTab: props.active
         }
     }
 
     onClickTabItem = (tab) => {
-        this.setState({ activeTab: tab })
+        if (this.props.root === false) {
+            this.props.router.push('/?active=' + tab)
+        } else {
+            this.setState({ activeTab: tab })
+        }
     }
 
     render() {

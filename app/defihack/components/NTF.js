@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import dudaPic from "../assets/duda.jpeg"
 import Image from "next/image"
+import Link from "next/link"
 
 export default class NFT extends Component {
     render() {
@@ -16,10 +17,13 @@ export default class NFT extends Component {
                             <br />
                             $15.00
                         </p>
-                        <button className="btn btn-primary">Place a bid</button>
+
+                        <Link href="/product/1" passHref>
+                            <button className="btn btn-primary">Place a bid</button>
+                        </Link>
                     </div>
                 </div>
-                <div className="bg-black bg-opacity-40 rounded-full w-7 h-7 flex content-center justify-center absolute right-2 top-2">
+                <div className="bg-black bg-opacity-40 rounded-full w-7 h-7 flex content-center justify-center absolute right-2 top-2 pt-1">
                     <Image src="/heart.svg" width="17px" height="20px" alt="Favorite" />
                 </div>
             </div>
