@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
+import Image from 'next/image'
 export default class Tab extends Component {
     static propTypes = {
         activeTab: PropTypes.string.isRequired,
+        icon: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired,
         onClick: PropTypes.func.isRequired
     }
@@ -18,6 +19,8 @@ export default class Tab extends Component {
             onClick,
             props: {
                 activeTab,
+                icon,
+                active,
                 label
             }
         } = this
@@ -28,12 +31,14 @@ export default class Tab extends Component {
             className += ' tab-list-active'
         }
 
+        let iconPath = activeTab === label ? '/' + icon + '_active.svg' : '/' + icon + '.svg'
+
         return (
             <li
                 className={className}
                 onClick={onClick}
             >
-                {label}
+                <Image src={iconPath} width="24px" height="24px" alt={label} />
             </li>
         )
     }

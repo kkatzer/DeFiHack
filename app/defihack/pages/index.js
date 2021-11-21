@@ -5,10 +5,12 @@ export default function App() {
     return (
         <div className="container mx-auto min-h-screen">
             <Tabs>
-                <div label="Home">
+                <div icon="home" label="Home">
                     <Home />
                 </div>
-                <div label="Teste" />
+                <div icon="search" label="Search" />
+                <div icon="fav" label="Favorites" />
+                <div icon="profile" label="Profile" />
             </Tabs>
         </div>
     )

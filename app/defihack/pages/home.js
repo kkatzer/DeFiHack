@@ -1,6 +1,7 @@
 import Campaigns from "../components/home/campaigns"
 import Explore from "../components/home/explore"
 import Featureds from "../components/home/featureds"
+import BuyNFTs from "../components/home/BuyNTFs"
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <Featureds />
 
       <Campaigns />
+
+      <BuyNFTs />
     </div>
   )
 }

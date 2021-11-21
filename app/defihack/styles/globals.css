@@ -48,15 +48,15 @@
     }
 
     .tab-list-item {
-        @apply inline-block list-none py-2 px-3 -m-px
+        @apply list-none w-10 h-10 flex content-center justify-center
     }
 
     .tab-list-active {
-        @apply bg-primary-light border-white border border-t-0
+        @apply bg-primary-light rounded-xl drop-shadow-green
     }
 
     .tabs {
-        @apply fixed bottom-0
+        @apply fixed bottom-0 bg-background w-full pb-7 pt-5
     }
 }
 
@@ -67,4 +67,12 @@
 .btn-sm {
     font-size: 9px;
     padding: 2px 6px;
+}
+
+.btn-secondary {
+    text-shadow: 0 0 4px rgba(111, 195, 117, 0.5);
+}
+
+.tab-content {
+    padding-bottom: 88px;
 }

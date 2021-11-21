@@ -19,6 +19,9 @@ module.exports = {
       },
       backgroundImage: {
         'dudaPic': "url('../assets/duda.jpeg')"
+      },
+      dropShadow: {
+        'green': '0 0 4px rgba(111, 195, 117, 0.5)'
       }
     },
   },
