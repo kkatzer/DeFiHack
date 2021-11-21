@@ -1,10 +1,12 @@
 import Tabs from "../components/tabs"
 import Home from "./home"
+import { useRouter } from "next/router"
 
 export default function App() {
+    const router = useRouter()
     return (
         <div className="container mx-auto min-h-screen">
-            <Tabs>
+            <Tabs active={ router.query.active !== undefined ? router.query.active : "Home"}>
                 <div icon="home" label="Home">
                     <Home />
                 </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import dudaPic from "../../assets/duda.jpeg"
 import Image from "next/image"
+import Link from "next/link"
 
 export default class Featured extends Component {
     render() {
@@ -14,7 +15,11 @@ export default class Featured extends Component {
                             <br />
                             $15.00
                         </p>
-                        <button className="btn-sm btn-primary">Buy</button>
+
+                        <Link href="/product/1" passHref>
+                            <button className="btn-sm btn-primary">Buy</button>
+
+                        </Link>
                     </div>
                 </div>
                 <div className="bg-black bg-opacity-40 rounded-full w-4 h-4 flex content-center justify-center absolute right-2 top-2">

@@ -43,6 +43,10 @@
         @apply text-xs font-semibold rounded
     }
 
+    .btn-lg {
+        @apply text-lg font-semibold rounded-md
+    }
+
     .tab-list {
         @apply border-t border-white pl-0
     }
