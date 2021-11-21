@@ -25,7 +25,7 @@ export default class Featured extends Component {
                         </Link>
                     </div>
                 </div>
-                <div className="bg-black bg-opacity-40 rounded-full w-4 h-4 flex content-center justify-center absolute right-2 top-2">
+                <div className="bg-black bg-opacity-40 rounded-full w-4 h-4 flex content-center justify-center absolute right-2 top-2" style={{paddingTop: "0.1rem"}}>
                     <Image src="/heart.svg" width="11px" height="13px" alt="Favorite" />
                 </div>
             </div>
