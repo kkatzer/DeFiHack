@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useRouter } from "next/router"
-import {buyNFT} from "../../scripts/celo-client";
+import { loadNFTs, buyNFT} from "../../scripts/celo-client"
 
 
 export default function Buy(props) {
@@ -17,8 +17,11 @@ export default function Buy(props) {
     const nft = props.nft
 
     const onClickBuy = () => {
-        buyNFT(nft).then(() => setBuyState(state.COMPLETE))
         setBuyState(state.LOADING)
+        buyNFT(nft).then(() => {
+            setBuyState(state.COMPLETE)
+            props.setIsBuyable(false)
+        })
         setTimeout(() => {
             setBuyState(state.COMPLETE)
         }, 10000)
