@@ -11,8 +11,8 @@ import {
     nftaddress, nftmarketaddress
 } from '../../../backend/config'
 
-let marketData = require("../../../backend/contracts/NFTMarket.sol/NFTMarket.json")
-let nftData = require("../../../backend/contracts/NFT.sol/NFT.json")
+let marketData = require("../../../backend/artifacts/contracts/NFTMarket.sol/NFTMarket.json")
+let nftData = require("../../../backend/artifacts/contracts/NFT.sol/NFT.json")
 
 export default function CreateItem() {
     const [fileUrl, setFileUrl] = useState(null)

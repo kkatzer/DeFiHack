@@ -17,6 +17,7 @@ export default function BuyProduct() {
     const nft = DataManager.getInstance().getNFT(pid)
 
     const [modalHidden, setModalHidden] = useState(true)
+    const [isBuyable, setIsBuyable] = useState(true)
 
     const toggleModal = () => {
         setModalHidden(!modalHidden)
@@ -51,12 +52,14 @@ export default function BuyProduct() {
                 </div>
 
                 <p className="px-6 text-white mt-6 text-sm font-normal" style={{ minHeight: "125px" }}>
-                    {nft.description}    
+                    {nft.description}
                 </p>
 
-                <div className="px-6">
-                    <button className="btn btn-lg btn-primary w-full" onClick={toggleModal}>Buy</button>
-                </div>
+                {isBuyable ?
+                    <div className="px-6">
+                        <button className="btn btn-lg btn-primary w-full" onClick={toggleModal}>Buy</button>
+                    </div>
+                    : null}
 
                 <Tabs active="Home" root={false} router={router}>
                     <div icon="home" label="Home" />
@@ -67,7 +70,7 @@ export default function BuyProduct() {
             </div>
             <div className={"modal bg-opacity-70 bg-background backdrop-filter backdrop-blur-2xl fixed top-0 w-screen h-screen z-50" + (modalHidden ? " hidden" : "")}>
                 <button className="text-white h-7 w-7 absolute top-10 right-5" onClick={toggleModal}><XIcon /></button>
-                <Buy close={toggleModal} nft={nft}/>
+                <Buy close={toggleModal} nft={nft} setIsBuyable={setIsBuyable}/>
             </div>
         </>
     )
