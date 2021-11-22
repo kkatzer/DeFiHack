@@ -27,7 +27,8 @@ export default function Home() {
     }, [])
 
     useEffect(() => {
-        setConnectButtonText(address ? addressBeautify(address) : 'Connect Wallet');
+        setConnectButtonText(address ? addressBeautify(address) : 'Connect Wallet')
+        DataManager.getInstance().setUserWallet(address)
     }, [address]);
   return (
     <div className="pt-12">
@@ -49,6 +50,7 @@ export default function Home() {
         try {
             let connector = await connect()
             setConnectButtonText(addressBeautify(connector.account))
+            DataManager.getInstance().setUserWallet(connector.account)
         } catch (error) {
             console.log(error)
         }

@@ -1,5 +1,6 @@
 import Tabs from "../components/tabs"
 import Home from "./home"
+import Profile from "./profile";
 import { useRouter } from "next/router"
 import {ContractKitProvider} from "@celo-tools/use-contractkit";
 
@@ -13,7 +14,9 @@ function App() {
                 </div>
                 <div icon="search" label="Search" />
                 <div icon="fav" label="Favorites" />
-                <div icon="profile" label="Profile" />
+                <div icon="profile" label="Profile">
+                    <Profile />
+                </div>
             </Tabs>
         </div>
     )

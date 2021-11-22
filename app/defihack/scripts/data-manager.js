@@ -25,7 +25,7 @@ export default class DataManager {
         return this._NFTs.find(x=>x.tokenId === tokenId)
     }
 
-    getuserWallet() {
+    getUserWallet() {
         return this._userWallet
     }
 
