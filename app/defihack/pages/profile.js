@@ -3,7 +3,7 @@ import Image from "next/image"
 import ellipsePic from '../assets/ellipse.svg'
 import Campaigns from "../components/organization/campaigns"
 import NFTs from "../components/profile/NFTs"
-import { loadNFTs } from '../scripts/celo-client'
+import { loadMyNFTs } from '../scripts/celo-client'
 import DataManager from '../scripts/data-manager'
 import { useEffect, useState } from 'react'
 
@@ -15,13 +15,12 @@ const addressBeautify = (address) => {
 }
 
 export default function Profile() {
-    const [nfts, setNFTs] = useState(DataManager.getInstance().getNFTs())
+    const [nfts, setNFTs] = useState([])
 
     const wallet = DataManager.getInstance().getUserWallet()
 
     useEffect(() => {
-        loadNFTs().then(r => {
-            DataManager.getInstance().setNFTs(r)
+        loadMyNFTs().then(r => {
             setNFTs(r)
         })
     }, [])
